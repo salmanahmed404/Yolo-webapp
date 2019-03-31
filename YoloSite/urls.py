@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Yolo import views
+from Yolo import views as Yolo_views
+from users import views as users_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name='home'),
-    path('register',views.register,name='register'),
-    path('login',views.login,name='login'),
+    path('',Yolo_views.home,name='home'),
+    path('register',users_views.register,name='register'),
+    #path('login',views.login,name='login'),
        
 ]
