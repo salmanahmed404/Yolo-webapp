@@ -18,11 +18,13 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from Yolo import views as Yolo_views
 from users import views as users_views
+from bookings import views as bookings_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',Yolo_views.home,name='home'),
     path('register',users_views.register,name='register'),
     path('login',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
-    path('logout',auth_views.LogoutView.as_view(template_name='Yolo/home_new.html'),name='logout'),      
+    path('logout',auth_views.LogoutView.as_view(template_name='Yolo/home_new.html'),name='logout'), 
+    path('hotels',bookings_views.hotels,name='hotels'),     
 ]

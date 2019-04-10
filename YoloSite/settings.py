@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Yolo',
     'widget_tweaks',
     'users',
+    'bookings',
 ]
 
 MIDDLEWARE = [
