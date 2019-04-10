@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',Yolo_views.home,name='home'),
     path('register',users_views.register,name='register'),
-    path('login',auth_views.LoginView.as_view(template_name='users/login.html'),name='login'),
+    path('login',auth_views.LoginView.as_view(template_name='users/login_new.html'),name='login'),
     path('logout',auth_views.LogoutView.as_view(template_name='Yolo/home_new.html'),name='logout'), 
     path('hotels',bookings_views.hotels,name='hotels'),     
 ]
