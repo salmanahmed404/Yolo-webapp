@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'users',
     'bookings',
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +81,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yolo_database',
-        'USER': 'django',
-        'PASSWORD': 'root',
+        'USER': 'root',
+        'PASSWORD': 'salman98',
         'HOST': 'localhost',
         'PORT': 3306
     }
