@@ -23,5 +23,19 @@ def find_hotels(request):
 
 def data(request):
     
-    #print("Connected")
+    """json_data = open('static/city_mock.json')
+    data = json.load(json_data)
+    for val in data:
+        a = City(city_name=val['city_name'])
+        a.save()
+        print("Successful")"""
+    
+    """json_data = open('static/hotels_mock.json')
+    obj = City.objects.all()
+    i = 0
+    data = json.load(json_data)
+    for val in data:
+        a = Hotels(hotel_name=val['hotel_name'],rating=val['rating'],city_name=obj[i])
+        i = i+1
+        a.save()"""
     return render (request,'bookings/data.html')    
