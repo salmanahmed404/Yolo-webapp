@@ -1,4 +1,6 @@
-<form>
+<form action="{% url 'find_hotels' %}" method="POST">
+    {% csrf_token %}
+    
     {{ city_form }}
     
     <br><br>
