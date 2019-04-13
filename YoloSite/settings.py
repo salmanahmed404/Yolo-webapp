@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'users',
     'bookings',
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +82,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yolo_database',
         'USER': 'root',
+<<<<<<< HEAD
         'PASSWORD': 'lari1234',
+=======
+        'PASSWORD': 'salman98',
+>>>>>>> ed81aa0fe66d1fd3e4fafe7007f6874685ca1c39
         'HOST': 'localhost',
         'PORT': 3306
     }
@@ -130,3 +133,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT= os.path.join(BASE_DIR,'static')
 
 LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!doctype html>
 {% load static %}
@@ -201,3 +202,13 @@
 </div>
 </body>
 </html>
+=======
+<form action="{% url 'find_hotels' %}" method="POST">
+    {% csrf_token %}
+    
+    {{ city_form }}
+    
+    <br><br>
+    <input type="submit" value="Find Hotels">
+</form>
+>>>>>>> ed81aa0fe66d1fd3e4fafe7007f6874685ca1c39
