@@ -75,6 +75,56 @@
         <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
     </div>
 
+<!-- Hotel pricing yaha se -->
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Single Room</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">{{hotel.single_room_cost}} <small class="text-muted">/ night</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Single Bed</li>
+          <li>Living Space for one person</li>
+          <li>Number of rooms available: {{hotel.single_room_number}}</li>
+          <li>         </li>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Double Room</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">{{hotel.double_room_cost}} <small class="text-muted">/ night</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Double Bed</li>
+          <li>Living Space for 2 people</li>
+          <li>Number of rooms available: {{hotel.double_room_number}}</li>
+          <li>         </li>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Executive Room</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">{{hotel.executive_room_cost}} <small class="text-muted">/ night</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>King Sized Double Bed</li>
+          <li>Elite Services</li>
+          <li>Number of rooms available: {{hotel.executive_room_number}}</li>
+          <li>         </li>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
+      </div>
+    </div>
+  </div>
 
     <!-- Hotel details starting here -->
 
@@ -189,7 +239,7 @@
 
         <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
             <div class="my-3 py-3">
-                <h2 class="display-5">No Breakfast</h2>
+                <h2 class="display-5">No AC</h2>
                 <p class="lead">The Hotel doesn't have AC</p>
 
 
