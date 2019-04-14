@@ -5,6 +5,7 @@ from Yolo.models import City
 from .models import Hotels
 from .forms import Select_City,Book_Hotel
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 
 @login_required
@@ -28,9 +29,12 @@ def find_hotels(request):
 
 def book(request,pk):
     if request.method == 'POST':
+        print('Requested post')
         hotel_obj = Hotels.objects.get(pk=pk)
         filled_hotelform = Book_Hotel(request.POST)
+
         if filled_hotelform.is_valid():
+            print('form validated')
             if filled_hotelform.cleaned_data['room_type'] == 'single_room':
                 hotel_obj.single_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
@@ -42,6 +46,10 @@ def book(request,pk):
             elif filled_hotelform.cleaned_data['room_type'] == 'executive_room':
                 hotel_obj.executive_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
+
+        else:
+#            print(f'Room type : {room_type_}\nNumber of room : {number_rooms_}')
+            return HttpResponseRedirect(request.path_info)  # redirects to same page if form validation failed
                 
         return redirect('response')    
 
