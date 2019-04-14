@@ -38,4 +38,5 @@ def data(request):
         a = Hotels(hotel_name=val['hotel_name'],rating=val['rating'],city_name=obj[i])
         i = i+1
         a.save()"""
+        
     return render (request,'bookings/data.html')    
