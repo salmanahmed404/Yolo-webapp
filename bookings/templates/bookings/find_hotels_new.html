@@ -69,7 +69,7 @@
             <h1 class="display-4 font-weight-normal">{{ hotel.hotel_name }}</h1>
             <h6 class="lead font-weight-normal">Located: {{hotel.address}}</h6>
             <p class="lead font-weight-normal">Rating: {{hotel.rating}}</p>
-            <a class="btn btn-outline-secondary" href="#">Book Now</a>
+            <a class="btn btn-outline-secondary" href="{% url 'book' hotel_pk %}">Book Now</a>
         </div>
         <div class="product-device box-shadow d-none d-md-block"></div>
         <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>

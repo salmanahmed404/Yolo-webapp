@@ -29,4 +29,6 @@ urlpatterns = [
     path('hotels',bookings_views.hotels,name='hotels'),     
     path('data',bookings_views.data,name='data'),
     path('find_hotels',bookings_views.find_hotels,name='find_hotels'),
+    path('book/<int:pk>',bookings_views.book,name='book'),
+    path('response',bookings_views.response,name='response'),
 ]

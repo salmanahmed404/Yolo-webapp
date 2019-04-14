@@ -3,7 +3,7 @@ import json
 import MySQLdb
 from Yolo.models import City
 from .models import Hotels
-from .forms import Select_City
+from .forms import Select_City,Book_Hotel
 from django.contrib.auth.decorators import login_required
 
 
@@ -19,11 +19,40 @@ def find_hotels(request):
         obj = Hotels.objects.all()
         for var in obj:
             if filled_form.cleaned_data['city_name'] == var.city_name:
+                hotel_pk = var.id
                 return render(request, 'bookings/find_hotels_new.html', 
                 {
                     'hotel': var,
+                    'hotel_pk':hotel_pk
                     })
 
+def book(request,pk):
+    if request.method == 'POST':
+        hotel_obj = Hotels.objects.get(pk=pk)
+        filled_hotelform = Book_Hotel(request.POST)
+        if filled_hotelform.is_valid():
+            if filled_hotelform.cleaned_data['room_type'] == 'single_room':
+                hotel_obj.single_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
+                hotel_obj.save()
+            elif filled_hotelform.cleaned_data['room_type'].double_room == 'double_room':
+                print("Entered")
+                hotel_obj.double_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
+                hotel_obj.save()
+                
+            elif filled_hotelform.cleaned_data['room_type'] == 'executive_room':
+                hotel_obj.executive_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
+                hotel_obj.save()
+                
+        return redirect('response')    
+
+    else:
+        hotel_form = Book_Hotel()
+        hotel_obj = Hotels.objects.get(pk=pk)
+        primary_key = hotel_obj.id
+        return render(request,'bookings/book.html',{'hotel_form':hotel_form,'hotel_obj':hotel_obj,'pk':primary_key})    
+
+def response(request):
+    return render(request,'bookings/response.html')
 
 def data(request):
 
