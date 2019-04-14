@@ -1,0 +1,34 @@
+{% load static %}
+{% load widget_tweaks %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
+
+<h2>Book a room at {{ hotel_obj.hotel_name }}</h2>
+
+<div class="container">
+    <p>Number of single bed rooms: {{ hotel_obj.single_room_number }}</p>
+    <p>Number of double bed rooms: {{ hotel_obj.double_room_number }}</p>
+    <p>Number of executive rooms: {{ hotel_obj.executive_room_number }}</p>
+</div>
+
+<div class="container">
+    <p>Cost of single bed room: {{ hotel_obj.single_room_cost }}</p>
+    <p>Cost of double bed room: {{ hotel_obj.double_room_cost }}</p>
+    <p>Cost of executive room {{ hotel_obj.executive_room_cost }}</p>
+</div>
+
+<h3>{{ note }}</h3>
+
+<form class="form-group" style="width:50%;" action="{% url 'book' pk %}" method="POST">
+    {% csrf_token %}
+
+    {% for field in hotel_form %}
+    {{ field.errors }}
+    {{ field.label_tag }}
+    {% render_field field class='form-control' %}
+    {% endfor %}
+
+    <br><br>
+
+    <input type="submit" value="Book Now">
+
+</form>
