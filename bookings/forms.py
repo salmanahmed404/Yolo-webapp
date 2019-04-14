@@ -12,4 +12,4 @@ class Select_City(forms.ModelForm):
 class Book_Hotel(forms.ModelForm):
     class Meta:
         model = Hotel_Input
-        fields = ['room_type','number_of_rooms']
+        fields = ['name','room_type','number_of_rooms','number_of_adults','number_of_children','contact']
