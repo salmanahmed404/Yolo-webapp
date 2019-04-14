@@ -18,6 +18,8 @@ class Hotels(models.Model):
     breakfast = models.BooleanField(default=False)
     cctv = models.BooleanField(default=False)
 
+    address = models.CharField(max_length=200,default="some address")
+
 
     city_name = models.ForeignKey(City,on_delete=models.CASCADE)
 

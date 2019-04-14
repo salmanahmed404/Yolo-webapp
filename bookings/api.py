@@ -3,7 +3,7 @@ import MySQLdb
 db = MySQLdb.connect(
         host='localhost',
         user='root',
-        passwd='salman98',
+        passwd='Shaima@123',
         db='yolo_database'
     )
 cursor = db.cursor()

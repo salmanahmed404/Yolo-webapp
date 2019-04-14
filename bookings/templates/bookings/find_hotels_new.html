@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -8,12 +9,12 @@
     <meta name="author" content="">
     <link rel="icon" href="https://getbootstrap.com/favicon.ico">
 
-    <title>Product example for Bootstrap</title>
+    <title>{{ hotel.hotel_name }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
 
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/product/product.css" rel="stylesheet">
@@ -30,9 +31,6 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 {% if user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{%  url 'hotels' %}">Hotels</a>
                 </li>
@@ -69,8 +67,8 @@
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
             <h1 class="display-4 font-weight-normal">{{ hotel.hotel_name }}</h1>
-            <h6 class="lead font-weight-normal">{{hotel.city_name}}</h6>
-            <p class="lead font-weight-normal">{{hotel.rating}}</p>
+            <h6 class="lead font-weight-normal">Located: {{hotel.address}}</h6>
+            <p class="lead font-weight-normal">Rating: {{hotel.rating}}</p>
             <a class="btn btn-outline-secondary" href="#">Book Now</a>
         </div>
         <div class="product-device box-shadow d-none d-md-block"></div>
@@ -219,35 +217,7 @@
                 </svg>
                 <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
             </div>
-            <div class="col-6 col-md">
-                <h5>Features</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Cool stuff</a></li>
-                    <li><a class="text-muted" href="#">Random feature</a></li>
-                    <li><a class="text-muted" href="#">Team feature</a></li>
-                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                    <li><a class="text-muted" href="#">Another one</a></li>
-                    <li><a class="text-muted" href="#">Last time</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Resources</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Resource</a></li>
-                    <li><a class="text-muted" href="#">Resource name</a></li>
-                    <li><a class="text-muted" href="#">Another resource</a></li>
-                    <li><a class="text-muted" href="#">Final resource</a></li>
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Resources</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Business</a></li>
-                    <li><a class="text-muted" href="#">Education</a></li>
-                    <li><a class="text-muted" href="#">Government</a></li>
-                    <li><a class="text-muted" href="#">Gaming</a></li>
-                </ul>
-            </div>
+
             <div class="col-6 col-md">
                 <h5>About</h5>
                 <ul class="list-unstyled text-small">

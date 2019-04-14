@@ -27,31 +27,33 @@ def find_hotels(request):
 
 def data(request):
 
-    json_data = open('static/city_mock_new.json')
+    json_data = open('static/city_mock_new2.json',encoding='utf8')
     data = json.load(json_data)
     for val in data:
         a = City(city_name=val['city_name'])
         a.save()
         print("Successful")
 
-    json_data = open('static/hotels_mock_new.json')
+    json_data2 = open('static/hotels_mock_new2.json',encoding='utf8')
     obj = City.objects.all()
     i = 0
-    data = json.load(json_data)
-    for val in data:
+    data2 = json.load(json_data2)
+    for val in data2:
         a = Hotels(hotel_name=val['hotel_name'],
                    single_room_number=val['single_room_number'],
                    double_room_number=val['double_room_number'],
                    executive_room_number=val['executive_room_number'],
                    single_room_cost=val['single_room_cost'],
                    double_room_cost=val['double_room_cost'],
-                   executive_room_cost=val['executive_room_number'],
+                   executive_room_cost=val['executive_room_cost'],
                    wifi=val['wifi'],
                    ac=val['ac'],
                    breakfast=val['breakfast'],
                    cctv=val['cctv'],
                    rating=val['rating'],
+                   address=val['address'],
                    city_name=obj[i], )
-        i = i+1
+        
         a.save()
+        i = i+1
     return render(request, 'bookings/data.html')
