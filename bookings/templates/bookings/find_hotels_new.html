@@ -14,56 +14,57 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/product/product.css" rel="stylesheet">
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">Tourism</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{% url 'home' %}">Tourism</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%  url 'hotels' %}">Hotels</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%  url 'data' %}">Data</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%  url 'logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%  url 'register' %}">Register <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{%  url 'login' %}">Login</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
                 {% if user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{%  url 'hotels' %}">Hotels</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{%  url 'data' %}">Data</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{%  url 'logout' %}">Logout</a>
-                </li>
+                <form class="form-inline mt-2 mt-md-0">
+                    <p class="lead text-white">Welcome {{ user.username }}</p>
+                </form>
                 {% else %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="{%  url 'register' %}">Register <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{%  url 'login' %}">Login</a>
-                </li>
+                <form class="form-inline mt-2 mt-md-0">
+                    <p class="lead text-white">Welcome Guest</p>
+                </form>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul>
-            {% if user.is_authenticated %}
-            <form class="form-inline mt-2 mt-md-0">
-                <p class="lead text-white">Welcome {{ user.username }}</p>
-            </form>
-            {% else %}
-            <form class="form-inline mt-2 mt-md-0">
-                <p class="lead text-white">Welcome Guest</p>
-            </form>
-            {% endif %}
-        </div>
-    </nav>
-
+            </div>
+        </nav>
+    </header>
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
             <h1 class="display-4 font-weight-normal">{{ hotel.hotel_name }}</h1>
@@ -75,229 +76,240 @@
         <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
     </div>
 
-<!-- Hotel pricing yaha se -->
+    <!-- Hotel pricing yaha se -->
 
-<div class="container">
-  <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Single Room</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">{{hotel.single_room_cost}} <small class="text-muted">/ night</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Single Bed</li>
-          <li>Living Space for one person</li>
-          <li>Number of rooms available: {{hotel.single_room_number}}</li>
-          <li>         </li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
-      </div>
-    </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Double Room</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">{{hotel.double_room_cost}} <small class="text-muted">/ night</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Double Bed</li>
-          <li>Living Space for 2 people</li>
-          <li>Number of rooms available: {{hotel.double_room_number}}</li>
-          <li>         </li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
-      </div>
-    </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Executive Room</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">{{hotel.executive_room_cost}} <small class="text-muted">/ night</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>King Sized Double Bed</li>
-          <li>Elite Services</li>
-          <li>Number of rooms available: {{hotel.executive_room_number}}</li>
-          <li>         </li>
-        </ul>
-        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
-      </div>
-    </div>
-  </div>
-
-    <!-- Hotel details starting here -->
-
-
-
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-
-        <!-- wifi -->
-
-        {%	if hotel.wifi	%}
-
-        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h2 class="display-5">Wi-Fi</h2>
-                <p class="lead">The Hotel provides free Wi-Fi</p>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Single Room</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{hotel.single_room_cost}} <small class="text-muted">/
+                            night</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Single Bed</li>
+                        <li>Living Space for one person</li>
+                        <li>Number of rooms available: {{hotel.single_room_number}}</li>
+                        <li> </li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
+                </div>
             </div>
-            <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Double Room</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{hotel.double_room_cost}} <small class="text-muted">/
+                            night</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Double Bed</li>
+                        <li>Living Space for 2 people</li>
+                        <li>Number of rooms available: {{hotel.double_room_number}}</li>
+                        <li> </li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
+                </div>
+            </div>
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Executive Room</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">{{hotel.executive_room_cost}} <small class="text-muted">/
+                            night</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>King Sized Double Bed</li>
+                        <li>Elite Services</li>
+                        <li>Number of rooms available: {{hotel.executive_room_number}}</li>
+                        <li> </li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Book Now!</button>
+                </div>
             </div>
         </div>
 
-        {%  else  %}
-
-        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-                <h2 class="display-5">No Wi-Fi</h2>
-                <p class="lead">The Hotel doesnt provide free Wi-Fi</p>
+        <!-- Hotel details starting here -->
 
 
+
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+
+            <!-- wifi -->
+
+            {%	if hotel.wifi	%}
+
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                <div class="my-3 p-3">
+                    <h2 class="display-5">Wi-Fi</h2>
+                    <p class="lead">The Hotel provides free Wi-Fi</p>
+                </div>
+                <div class="bg-dark box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
             </div>
-            <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+
+            {%  else  %}
+
+            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">No Wi-Fi</h2>
+                    <p class="lead">The Hotel doesnt provide free Wi-Fi</p>
+
+
+                </div>
+                <div class="bg-light box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
             </div>
+
+            {% endif %}
+
+            <!-- breakfast -->
+
+            {%	if hotel.breakfast	%}
+
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                <div class="my-3 p-3">
+                    <h2 class="display-5">Breakfast</h2>
+                    <p class="lead">The Hotel provides Breakfast</p>
+                </div>
+                <div class="bg-dark box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
+            </div>
+
+            {%  else  %}
+
+            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">No Breakfast</h2>
+                    <p class="lead">The Hotel doesnt provide Breakfast</p>
+
+
+                </div>
+                <div class="bg-light box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
+            </div>
+
+            {% endif %}
+
         </div>
 
-        {% endif %}
 
-        <!-- breakfast -->
 
-        {%	if hotel.breakfast	%}
+        <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
 
-        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h2 class="display-5">Breakfast</h2>
-                <p class="lead">The Hotel provides Breakfast</p>
+            <!-- cctv -->
+
+            {%	if hotel.cctv	%}
+
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                <div class="my-3 p-3">
+                    <h2 class="display-5">CCTV</h2>
+                    <p class="lead">The Hotel has CCTV</p>
+                </div>
+                <div class="bg-dark box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
             </div>
-            <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+
+            {%  else  %}
+
+            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">No CCTV</h2>
+                    <p class="lead">The Hotel doesn't have CCTV</p>
+
+
+                </div>
+                <div class="bg-light box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
             </div>
+
+            {% endif %}
+
+            <!-- ac -->
+
+            {%	if hotel.ac	%}
+
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                <div class="my-3 p-3">
+                    <h2 class="display-5">AC</h2>
+                    <p class="lead">The Hotel has AC</p>
+                </div>
+                <div class="bg-dark box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
+            </div>
+
+            {%  else  %}
+
+            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                <div class="my-3 py-3">
+                    <h2 class="display-5">No AC</h2>
+                    <p class="lead">The Hotel doesn't have AC</p>
+
+
+                </div>
+                <div class="bg-light box-shadow mx-auto"
+                    style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                </div>
+            </div>
+
+            {% endif %}
         </div>
 
-        {%  else  %}
+        <footer class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="d-block mb-2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                        <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                        <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                        <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                        <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                        <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                    </svg>
+                    <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+                </div>
 
-        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-                <h2 class="display-5">No Breakfast</h2>
-                <p class="lead">The Hotel doesnt provide Breakfast</p>
-
-
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Team</a></li>
+                        <li><a class="text-muted" href="#">Locations</a></li>
+                        <li><a class="text-muted" href="#">Privacy</a></li>
+                        <li><a class="text-muted" href="#">Terms</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-            </div>
-        </div>
-
-        {% endif %}
-
-    </div>
+        </footer>
 
 
-
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-
-        <!-- cctv -->
-
-        {%	if hotel.cctv	%}
-
-        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h2 class="display-5">CCTV</h2>
-                <p class="lead">The Hotel has CCTV</p>
-            </div>
-            <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-            </div>
-        </div>
-
-        {%  else  %}
-
-        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-                <h2 class="display-5">No CCTV</h2>
-                <p class="lead">The Hotel doesn't have CCTV</p>
-
-
-            </div>
-            <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-            </div>
-        </div>
-
-        {% endif %}
-
-        <!-- ac -->
-
-        {%	if hotel.ac	%}
-
-        <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h2 class="display-5">AC</h2>
-                <p class="lead">The Hotel has AC</p>
-            </div>
-            <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-            </div>
-        </div>
-
-        {%  else  %}
-
-        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-            <div class="my-3 py-3">
-                <h2 class="display-5">No AC</h2>
-                <p class="lead">The Hotel doesn't have AC</p>
-
-
-            </div>
-            <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-            </div>
-        </div>
-
-        {% endif %}
-    </div>
-
-    <footer class="container py-5">
-        <div class="row">
-            <div class="col-12 col-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="d-block mb-2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
-                    <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
-                    <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
-                    <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
-                    <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
-                    <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
-                </svg>
-                <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
-            </div>
-
-            <div class="col-6 col-md">
-                <h5>About</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Team</a></li>
-                    <li><a class="text-muted" href="#">Locations</a></li>
-                    <li><a class="text-muted" href="#">Privacy</a></li>
-                    <li><a class="text-muted" href="#">Terms</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-
-    <!-- Bootstrap core JavaScript
+        <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <script>
-        Holder.addTheme('thumb', {
-            bg: '#55595c',
-            fg: '#eceeef',
-            text: 'Thumbnail'
-        });
-    </script>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+        <script src="../../assets/js/vendor/popper.min.js"></script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <script>
+            Holder.addTheme('thumb', {
+                bg: '#55595c',
+                fg: '#eceeef',
+                text: 'Thumbnail'
+            });
+        </script>
 </body>
 
 </html>
