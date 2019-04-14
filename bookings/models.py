@@ -1,6 +1,6 @@
 from django.db import models
 from Yolo.models import City
-from phone_field import PhoneField
+#from phone_field import PhoneField
 
 class Hotels(models.Model):
     hotel_name = models.CharField(max_length=50)

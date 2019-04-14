@@ -81,8 +81,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yolo_database',
-        'USER': 'root',
-        'PASSWORD': 'salman98',
+#        'USER': 'root',
+        'USER': 'django',
+#        'PASSWORD': 'salman98',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': 3306
     }
