@@ -60,7 +60,7 @@ def book(request,pk):
         return render(request,'bookings/book.html',{'hotel_form':hotel_form,'hotel_obj':hotel_obj,'pk':primary_key})    
 
 def response(request):
-    return render(request,'bookings/response.html')
+    return render(request,'bookings/response_new.html')
 
 def data(request):
 
