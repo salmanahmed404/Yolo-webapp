@@ -70,6 +70,11 @@
         text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
         box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
       }
+      h1{
+        font-weight: bold;
+        color: #fff;
+        font-size: 150%;
+      }
 
       .cover-container {
         max-width: 42em;
@@ -190,21 +195,26 @@
         check-out <input type="date" name="email" autocomplete="off">
         <input type="submit">
       </form>-->
-      <form action="{% url 'find_hotels' %}" method="POST">
+      <div align="center" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark">
+        <div align="center" class="col-md-8 p-lg-5 mx-auto my-5">
+      <form align="center" action="{% url 'find_hotels' %}" method="POST">
         {% csrf_token %}
         
-        {{ city_form }}
+        <h1 class="lead font-weight-150%">{{ city_form }}</h1>
         
         <br><br>
-        <input type="submit" value="Find Hotels">
+    
+        <button class="btn btn-outline-info" type="submit" >Find Hotels</button>
+          
     </form>
+    </div>
     
     
   </main>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>amazing group</p>
+      <p>Yolo Team</p>
     </div>
   </footer>
 </div>
