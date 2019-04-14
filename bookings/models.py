@@ -13,6 +13,14 @@ class Hotels(models.Model):
     double_room_cost = models.FloatField(default=0)
     executive_room_cost = models.FloatField(default=0)
 
+    wifi = models.BooleanField(default=False)
+    ac = models.BooleanField(default=False)
+    breakfast = models.BooleanField(default=False)
+    cctv = models.BooleanField(default=False)
+
+    address = models.CharField(max_length=200,default="some address")
+
+
     city_name = models.ForeignKey(City,on_delete=models.CASCADE)
 
     def __str__(self):
