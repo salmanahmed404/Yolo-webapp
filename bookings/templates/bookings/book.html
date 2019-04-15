@@ -1,34 +1,133 @@
 {% load static %}
 {% load widget_tweaks %}
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
+<style>
+  .navbar-nav>li>a,
+  .navbar-brand {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    height: 60px;
+  }
 
-<h2>Book a room at {{ hotel_obj.hotel_name }}</h2>
+  .navbar {
+    min-height: 50px !important;
+  }
+</style>
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-<div class="container">
-    <p>Number of single bed rooms: {{ hotel_obj.single_room_number }}</p>
-    <p>Number of double bed rooms: {{ hotel_obj.double_room_number }}</p>
-    <p>Number of executive rooms: {{ hotel_obj.executive_room_number }}</p>
-</div>
 
-<div class="container">
-    <p>Cost of single bed room: {{ hotel_obj.single_room_cost }}</p>
-    <p>Cost of double bed room: {{ hotel_obj.double_room_cost }}</p>
-    <p>Cost of executive room {{ hotel_obj.executive_room_cost }}</p>
-</div>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark top-20px bg-dark">
+      <a class="navbar-brand" href="/">Tourism</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
 
-<h3>{{ note }}</h3>
+          <li class="nav-item active">
+            <a class="nav-link" href="/hotels/">Hotels</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/data/">Data</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/logout/">Logout</a>
+          </li>
 
-<form class="form-group" style="width:50%;" action="{% url 'book' pk %}" method="POST">
-    {% csrf_token %}
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
 
-    {% for field in hotel_form %}
-    {{ field.errors }}
-    {{ field.label_tag }}
-    {% render_field field class='form-control' %}
-    {% endfor %}
+        <form class="form-inline mt-1 mt-md-0">
+          <p class="lead text-white">Welcome admin</p>
+        </form>
 
-    <br><br>
+      </div>
+    </nav>
+  </header>
+  <main role="main" style="margin-top:0px">
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 bg-#fff">
+      <div class="col-md-12 p-lg-12 mx-auto my-15" bg-#fff>
+        <h2 align=center>Book a Room at {{ hotel_obj.hotel_name }}</h2>
 
-    <input type="submit" value="Book Now">
+        <main role="main" style="margin-top:40px">
 
-</form>
+
+          <div class="container">
+            <div class="card-deck mb-3 text-center">
+              <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">Single Room</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title">{{ hotel_obj.single_room_cost }} <small class="text-muted">/ night</small></h1>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li>Number of Single bedrooms : {{ hotel_obj.single_room_number }}</li>
+                    <!-- <li>Cost of Single bedroom : {{ hotel_obj.single_room_cost }}</li> -->
+                  </ul>
+                </div>
+              </div>
+              <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">Double Room</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title">{{ hotel_obj.double_room_cost }} <small class="text-muted">/ night</small></h1>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li>Number of Double bedrooms : {{ hotel_obj.double_room_number }}</li>
+                    <!-- <li>Cost of Double bedroom : {{ hotel_obj.double_room_cost }}</li> -->
+                  </ul>
+                </div>
+              </div>
+              <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                  <h4 class="my-0 font-weight-normal">Executive Room</h4>
+                </div>
+                <div class="card-body">
+                  <h1 class="card-title pricing-card-title">{{ hotel_obj.executive_room_cost }} <small class="text-muted">/ night</small></h1>
+                  <ul class="list-unstyled mt-3 mb-4">
+                    <li>Number of Executive rooms : {{ hotel_obj.executive_room_number }}</li>
+                    <!-- <li>Cost of Executive room : {{ hotel_obj.executive_room_cost }}</li> -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="container" bg-#fff>
+
+              <p></p>
+              <p></p>
+              <p></p>
+            </div>
+
+            <div class="container" bg-#fff>
+              <p></p>
+              <p></p>
+              <p></p>
+            </div>
+
+            <h3>{{ note }}</h3>
+
+            <div class="container">
+              <form class="form-group form-center" style="width:30%;" action="{% url 'book' pk %}" method="POST">
+                {% csrf_token %}
+
+                {% for field in hotel_form %}
+                {{ field.errors }}
+                {{ field.label_tag }}
+                {% render_field field class='form-control' %}
+                {% endfor %}
+
+                <br><br>
+
+                <input type="submit" value="Book Now" class="btn btn-lg btn-primary">
+            </div>
+          </div>
+      </div>
+  </main>
+  </form>
+  </main>
+</body>

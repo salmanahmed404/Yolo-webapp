@@ -133,6 +133,9 @@
             <a class="nav-link" href="{%  url 'login' %}">Login</a>
           </li>
           {% endif %}
+          <li class="nav-item active">
+            <a class="nav-link active" href="sql_queries">Queries</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Disabled</a>
           </li>
@@ -216,30 +219,51 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+          <svg class="bd-placeholder-img rounded-circle" width="150" height="150" xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            <defs>
+              <pattern id="image" patternUnits="userSpaceOnUse" height="170" width="170">
+                <image x="1" y="1" height="150" width="150"
+                  xlink:href="https://promos.makemytrip.com/store//DH-hdfc-18032019-116x116.png"></image>
+              </pattern>
+            </defs>
+            <circle id='' cx="200" cy="200" r="250" fill="url(#image)">
           </svg>
-          <h2>Tour Planning</h2>
-          <p>Start planning your tour today</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <h2>Rentals / Tickets</h2>
+          <p>Book your tickets today</p>
+          <p><a class="btn btn-secondary" href="#" role="button">Book Now &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+          <svg class="bd-placeholder-img rounded-circle" width="150" height="150" xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
             <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            <defs>
+              <pattern id="image" patternUnits="userSpaceOnUse" height="170" width="170">
+                <image x="1" y="1" height="150" width="150"
+                  xlink:href="https://https://q-ak.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg">
+                </image>
+              </pattern>
+            </defs>
+            <circle id='' cx="200" cy="200" r="250" fill="url(#image)">
+              <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
           </svg>
           <h2>Hotels</h2>
           <p>Find your suitable hotel</p>
           <p><a class="btn btn-secondary" href="{% url 'hotels' %}" role="button">Hotels &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg"
+          <svg class="bd-placeholder-img rounded-circle" width="150" height="150" xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            <defs>
+              <pattern id="image" patternUnits="userSpaceOnUse" height="170" width="170">
+                <image x="1" y="1" height="150" width="150"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALwAAAC8CAMAAAD1lzSZAAAANlBMVEUemcz///9atNrD5PEsn8/x+fzV7PWHyeSq2ew6ptKOzOVzv9+c0unH5fJIrNbj8vlludy43++cUVI5AAAGfUlEQVR4nO2d2ZaDIAyGFcRl3N//ZacKuAISpZKc0/9mukzrV5qGAIEkKWElsQGe6AcfSz/4WPrBx9IP/qi8Lf/+/gYmNXxul23+heuEhRftX82yxKyMFU0rQl4uHHze1JUFe6uqLvtQlwwDL8ra1t6WDxDkGwgA3zcMAK41BOB/Ci/K4Qa55o8Kn4Os5ayseGT/T+DLO+ZyFBtjwJc+vsVH1W3ruQsfDP0J/j34oOgz/i3juQPfhrD1o9iN+AEOL+ovoE+qwY4fDN88c44uZVDbAcL337CYVQzm9mHwX2x2KVjjQ+DF/UjAXxDLB8Dnof2jWZW/2/GHb15B/yjz7rK84b/lIE2qw8KL7kX2j9fxM3w/+Pxd9iTpvOi94PNve8izMp+frQ98BHY/eg/4Nga7F/01/BgF3Yv+Ej6KzXjSX8FHZL+mv4CPyv6hd0eZbnjxTjhjl9vfO+Ff7ldNYrfh34xnbHLFOS741+JIpxwxpgO+jY2tZHc5dngR19Gsqqw/Wjv8d4faEA1geBwGL9UA4fPYwFvZ+iobfHwPv5XF21vg/2LjHmQ2HDN8j8XTaGVGj2OGx+NptIwdrREeS/e0VesLHzuWNKnzhMfk4lcZYhwDPJq4YK/KCx6bm9Q6N/0ZHmnDm5r+DI+14Q1Nf4JH2/CGpj/Bl7ERHTo2/Qkeo4/XOsZnR3iMneuq3A3/xprZfdVO+D42nluH4PIAjzMyWFW64HENoM7qHPCoRq5G9Xb4IjbbpRo7PHarOdjNDh65r5klbPDYfc2k0gaPu4eSqm3wscF8lFngccc1WrkZHu8wZKvGDI9vqsmk2gyPdwy1VWWEp+DlJwkTfLQkA6BaEzz095rNuz8EVwNHtgRGXTFO8ROfu43x44DrcUq1l8/pf1I/sGooRs5TSD7Snwke2EXN61zTddVqre4mhtWXyYd1pmcj70pIpjIDbnzx6y9282pgVPZxWUU2rXYVGn5+g2n1a6y7uR/XdHlTNL1sHe3TmLqRpw37fHVVk3LfCzMTPIw94SoU0k2maIq0l3ZUa3gucfP5U2r4Tt3g6rJdKnwvnBngvV+caFhpZ7rJlKvVn2nCkw+r/+c7+OQAnwAazwAPDQ40hh5+qavzZUTjBZ/rp3t/+DwgfLqDz5d0Cy/4zdPeV27P8NBg3gK/Rhlfgx/P8FA3Hw/+LyC8sMHz9+ChMwdCvWL1Nnt4BoMXj+ChAbHyiZWeFD/DlwD4zL+TCgFfyMt1fKHZwye8OMBve9hETaYvQQUAfngOXx0GAApDHN5oA8/28LunS4C3Y8/hPx6r34ZDfvD9Cp9tnh4g2Xgh4DOx2/B1MhsjPDfZ/Lwx1n8cFwJ+zthcv2wwfCf/8Hlk1AMC8iDwScY3CbsH+I51F/Dqz0e8AIXjAX6wswqxpL3u4ef33sGnxpbnaQme3Q3QSUl1+RIa7+D7a3gVEsMbLUB4oLZ/Z7nqpY42X2CG1yMopgL6qPDgkFh3iXv7cMAXgeANITF4MLLCb7ubF+ANg5EH8NsQa4HnnvBwR2EYBoIH4Aq+AsHr8CB7AJ+e4aFTH/oF9R5+iW36w4fR8BKWLX4eDG+a+oBOOvUqGuFLk1fyrupzj9+EhB9Vwik7TTZ4yzjpBJzuK9O8Zow12k8pys99MfX2jRl+mGYt1/m0O/CFCR7o6JcGWEZSM+W6G5RvmOcbjfpw25cJOPy6NLKBh05xD+M8SawvLnSQwwreT8GWtJ5xVA/nvfzPYg4j1aRxwnNwapVxipv04gLpZR3aC2qklzJJLyKTXr6nnThBOmWFgqe3JguRTtOinSBHOjURvd24kkLR+xtnOi5yf+NOhEbeT7lT0JHHNxfJ/6S3XdDe8EJ6qxHiIcn1Ji+8Te+zvQ5t0/tsbMTa9H5bSpHGCH6beXH6et9t1Ci7We8N7Ainn/yPDqB9aAM6dwk5LgPbkAp2UAmu0Sz0iBhUzh56OA8mjwM/FglPlHDnQCo0XdWdo8CwmP29Q9hoH39H++BB0kc+0j5sk/Yxp7QPmKV9tC/tQ5VpH2dN+yBx2ke40z48PyVdtiClXTCCdqkO2kVSUtLlaVLahYFS0iWZ0i8Wwyq+XwwrJV2GbBLhAnDB8d8tvRcU//2ihzM+3XKTkwgX+pxEuMTqLLrFbaXAZYVHLGWFlTwLOnfoCjpribahWUp7o3MR85FAEfOX9YOPpR98LP3gY+kHH0v/7+RPCLXp0tIAAAAASUVORK5CYII=">
+                </image>
+              </pattern>
+            </defs>
+            <circle id='' cx="200" cy="200" r="250" fill="url(#image)">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
           </svg>
           <h2>Login / Sign Up</h2>
           <p>Login or Sign Up to get started</p>
@@ -313,5 +337,5 @@
   <script src="{% static 'jquery-3.3.1.min' %}"></script>
   <!--<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>-->
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-
+</body>
 </html>

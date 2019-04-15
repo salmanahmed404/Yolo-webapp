@@ -73,7 +73,7 @@
       h1{
         font-weight: bold;
         color: #fff;
-        font-size: 175%;
+        font-size: 150%;
       }
 
       .cover-container {
@@ -200,7 +200,7 @@
       <form align="center" action="{% url 'find_hotels' %}" method="POST">
         {% csrf_token %}
         
-        <h1 class="display-5 font-weight-normal">{{ city_form }}</h1>
+        <h1 class="display-6 font-weight-normal">{{ city_form }}</h1>
         
         <br><br>
     
@@ -214,7 +214,7 @@
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>Yolo Team</p>
+      <p align=center class="mt-5 mb-3 text-muted">&copy; Yolo Team</p>
     </div>
   </footer>
 </div>
