@@ -39,15 +39,16 @@ def book(request,pk):
             if filled_hotelform.cleaned_data['room_type'] == 'single_room':
                 hotel_obj.single_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
+                #filled_hotelform.save()
             elif filled_hotelform.cleaned_data['room_type'] == 'double_room':
                 print("Entered")
                 hotel_obj.double_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
-                
+                #filled_hotelform.save()
             elif filled_hotelform.cleaned_data['room_type'] == 'executive_room':
                 hotel_obj.executive_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
-
+                #filled_hotelform.save()
         else:
 #            print(f'Room type : {room_type_}\nNumber of room : {number_rooms_}')
             return HttpResponseRedirect(request.path_info)  # redirects to same page if form validation failed
@@ -65,12 +66,12 @@ def response(request):
 
 def data(request):
 
-    json_data = open('static/city_mock_new2.json',encoding='utf8')
+    """json_data = open('static/city_mock_new2.json',encoding='utf8')
     data = json.load(json_data)
     for val in data:
         a = City(city_name=val['city_name'])
         a.save()
-        print("Successful")
+        print("Successful")"""
 
     json_data2 = open('static/hotels_mock_new2.json',encoding='utf8')
     obj = City.objects.all()
