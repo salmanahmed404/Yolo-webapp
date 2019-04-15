@@ -112,7 +112,7 @@
             <h3>{{ note }}</h3>
 
             <div class="container">
-              <form class="form-group form-center" style="width:30%;" action="{% url 'book' pk %}" method="POST">
+              <form class="form-group form-center" style="width:30%;" action="{% url 'book' pk %}" method="POST" >
                 {% csrf_token %}
 
                 {% for field in hotel_form %}

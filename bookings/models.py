@@ -29,22 +29,11 @@ class Hotels(models.Model):
 
 class Hotel_Input(models.Model):
     name = models.CharField(max_length=30,blank=True)
-    ADULTS_CHOICES = (
-        (0,'0'),
-        (1,'1'),
-        (2,'2'),
-        (3,'3'),
-    )
-    number_of_adults = models.PositiveSmallIntegerField(choices=ADULTS_CHOICES,blank=True,default=0)
-    number_of_children = models.PositiveSmallIntegerField(choices=ADULTS_CHOICES,blank=True,default=0)
+    number_of_adults = models.PositiveSmallIntegerField(choices=[('1','1'),('2','2'),('3','3')],blank=True,default=0)
+    number_of_children = models.PositiveSmallIntegerField(choices=[('1','1'),('2','2')],blank=True,default=0)
     contact = models.CharField(max_length=12,blank=True)
 
-    #booking_id = models.IntegerField(default=0)
-    ROOM_TYPES = (
-        ('single_room','Single Room'),
-        ('double_room','Double Room'),
-        ('executive_room','Executive Room')
-    )
-    room_type = models.CharField(max_length=50,choices=ROOM_TYPES ,blank=True)
+    booking_id = models.IntegerField(default=0000000000)
+    room_type = models.CharField(max_length=50,choices=[('single_room','Single Room'),('double_room','Double Room'),('executive_room','Executive Room')],blank=True)
 
     number_of_rooms = models.IntegerField()
