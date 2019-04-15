@@ -31,6 +31,8 @@ def book(request,pk):
         hotel_obj = Hotels.objects.get(pk=pk)
         filled_hotelform = Book_Hotel(request.POST)
         if filled_hotelform.is_valid():
+            print("Entered")
+            print(filled_hotelform.cleaned_data['room_type'])
             if filled_hotelform.cleaned_data['room_type'] == 'single_room':
                 hotel_obj.single_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
