@@ -39,7 +39,7 @@ class Hotel_Input(models.Model):
     number_of_children = models.PositiveSmallIntegerField(choices=ADULTS_CHOICES,blank=True,default=0)
     contact = models.CharField(max_length=12,blank=True)
 
-    booking_id = models.IntegerField(default=0)
+    #booking_id = models.IntegerField(default=0)
     ROOM_TYPES = (
         ('single_room','Single Room'),
         ('double_room','Double Room'),

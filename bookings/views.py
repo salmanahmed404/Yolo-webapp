@@ -32,21 +32,22 @@ def book(request,pk):
         print('Requested post')
         hotel_obj = Hotels.objects.get(pk=pk)
         filled_hotelform = Book_Hotel(request.POST)
-
+        double_room = hotel_obj.room_type['double_room']
         if filled_hotelform.is_valid():
             print('form validated')
-            if filled_hotelform.cleaned_data['room_type'] == 'single_room':
+            if filled_hotelform.cleaned_data['room_type'] == single_room:
                 hotel_obj.single_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
-            elif filled_hotelform.cleaned_data['room_type'].double_room == 'double_room':
+                filled_hotelform.save()
+            elif filled_hotelform.cleaned_data['room_type'].double_room == double_room:
                 print("Entered")
                 hotel_obj.double_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
-                
-            elif filled_hotelform.cleaned_data['room_type'] == 'executive_room':
+                filled_hotelform.save()
+            elif filled_hotelform.cleaned_data['room_type'] == executive_room:
                 hotel_obj.executive_room_number -= filled_hotelform.cleaned_data['number_of_rooms']
                 hotel_obj.save()
-
+                filled_hotelform.save()
         else:
 #            print(f'Room type : {room_type_}\nNumber of room : {number_rooms_}')
             return HttpResponseRedirect(request.path_info)  # redirects to same page if form validation failed
