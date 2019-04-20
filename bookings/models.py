@@ -29,7 +29,7 @@ class Hotels(models.Model):
 
 class Hotel_Input(models.Model):
     name = models.CharField(max_length=30,blank=True)
-    number_of_adults = models.PositiveSmallIntegerField(choices=[('1','1'),('2','2'),('3','3')],blank=True,default=0)
+    number_of_adults = models.PositiveSmallIntegerField(choices=[(1,'1'),(2,'2'),(3,'3')],blank=True,default=0)
     number_of_children = models.PositiveSmallIntegerField(choices=[('1','1'),('2','2')],blank=True,default=0)
     contact = models.CharField(max_length=12,blank=True)
 
