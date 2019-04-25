@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'users',
     'bookings',
+    'rail_booking',
 ]
 
 MIDDLEWARE = [
