@@ -1,24 +1,10 @@
-"""YoloSite URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from Yolo import views as Yolo_views
 from users import views as users_views
 from bookings import views as bookings_views
+from rail_booking import views as rail_views
 from django.conf import settings
 import debug_toolbar
 
@@ -35,4 +21,6 @@ urlpatterns = [
     path('book/<int:pk>',bookings_views.book,name='book'),
     path('response/',bookings_views.response,name='response'),
     path('sql_queries/',Yolo_views.sql_queries,name='sql_queries'),
+    path('find_trains/',rail_views.find_trains,name='find_trains'),
+    path('get_trains/',rail_views.get_trains,name='get_trains'),
 ]
