@@ -1,5 +1,5 @@
 
-# College DBMS Project
+# Academic Project
 
 
 ### Changing the mysql settings
@@ -29,9 +29,3 @@ Install required dependencies
 ```
 pip3 install -r requirements.txt
 ```
-
-### IMPORTANT NOTES NOTES
-
-######	Changes made to ```__init__.py``` for mySQL to work on Linux, if it doesnt work on windows, empty the file
-######	requirements.txt file updated to just include the required dependencies for this project
-######	settings.py added to gitignore so it doesnt mess mySQL everytime theres a commit. Add changes to the bottom of this file, if made to settings.py
