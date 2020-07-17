@@ -29,3 +29,15 @@ Install required dependencies
 ```
 pip3 install -r requirements.txt
 ```
+
+Create and apply migrations
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Run the development server
+```
+python manage.py runserver
+```
+The site will be visible at http://localhost:8000
